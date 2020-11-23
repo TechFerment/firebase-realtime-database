@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-database.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        // YourCode
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+
+      // Add data
+      let obj = {
+        name: "TF3",
+        age: 25,
+      };
+      firebase.database().ref("users/user3").set(obj);
+
+      // // read data
+      firebase
+        .database()
+        .ref("users/user1")
+        .on("value", (sanpshot) => {
+          console.log(sanpshot.val());
+        });
+
+      // update data
+      let newupdateddata = {
+        name: "TF0",
+      };
+      firebase.database().ref("users/user3").update(newupdateddata);
+
+      // remove data
+      firebase.database().ref("users/user3").remove();
+    </script>
+  </body>
+</html>
